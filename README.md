@@ -436,4 +436,5 @@ Built with ❤️ for SRM Institute of Science & Technology
 **Last Updated:** August 13, 2026  
 **Status:** ✅ Production Ready (Local Dev Environment)
 #   S m a r t _ P a r k i n g -  
+ #   s m a r t - p a r k i n g  
  
