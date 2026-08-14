@@ -7,6 +7,7 @@ A full-stack IoT parking management solution with virtual sensor simulation, rea
 ## 🎯 Project Overview
 
 SmartPark is a college vibe coding project demonstrating:
+
 - **Cloud Applications** - Scalable IoT platform
 - **Sensors/IoT** - Virtual ultrasonic sensor simulation
 - **Real-time Processing** - WebSocket live updates
@@ -22,6 +23,7 @@ Virtual Sensors → FastAPI Backend → SQLite Database → WebSocket → React 
 ```
 
 **Future Production:**
+
 ```
 Ultrasonic Sensors → ESP32 → Wi-Fi → MQTT → AWS IoT Core → Lambda → RDS → API → React
 ```
@@ -29,6 +31,7 @@ Ultrasonic Sensors → ESP32 → Wi-Fi → MQTT → AWS IoT Core → Lambda → 
 ## 📋 Features Implemented
 
 ### ✅ Core Functionality
+
 - **40 Parking Slots** - Visual grid with real-time status updates
 - **Virtual Sensor Simulation** - Ultrasonic distance readings (15-25cm occupied, 70-100cm available)
 - **Vehicle Entry/Exit** - Automatic slot status management
@@ -41,12 +44,14 @@ Ultrasonic Sensors → ESP32 → Wi-Fi → MQTT → AWS IoT Core → Lambda → 
 - **WebSocket Broadcasting** - Instant dashboard updates
 
 ### ✅ Database
+
 - **SQLAlchemy ORM** - 6 core models (Slot, Sensor, Vehicle, Session, Reservation, Event)
 - **Realistic Seed Data** - 40 sensors, 20 vehicles, historical sessions
 - **Complex Queries** - Aggregations for analytics and reporting
 - **Transactional Integrity** - Proper commit/rollback handling
 
 ### ✅ Frontend
+
 - **React 18 + TypeScript** - Type-safe component architecture
 - **Vite** - Lightning-fast development server
 - **Tailwind CSS** - Modern, responsive design
@@ -55,6 +60,7 @@ Ultrasonic Sensors → ESP32 → Wi-Fi → MQTT → AWS IoT Core → Lambda → 
 - **Lucide Icons** - Professional icon system
 
 ### ✅ Backend
+
 - **FastAPI** - High-performance async Python framework
 - **Pydantic v2** - Runtime data validation
 - **SQLAlchemy 2.0** - Modern ORM with async support
@@ -64,11 +70,13 @@ Ultrasonic Sensors → ESP32 → Wi-Fi → MQTT → AWS IoT Core → Lambda → 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.10+
 - Node.js 18+
 - SQLite3 (included with Python)
 
 ### Backend Setup
+
 ```bash
 cd backend
 python -m pip install -r requirements.txt
@@ -78,6 +86,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 **Backend runs on:** http://127.0.0.1:8000
 
 ### Frontend Setup
+
 ```bash
 cd frontend
 npm install
@@ -89,89 +98,102 @@ npm run dev
 ## 📡 API Endpoints
 
 ### Core API
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/api/slots` | List all parking slots |
-| POST | `/api/slots/{id}/entry` | Simulate vehicle entry |
-| POST | `/api/slots/{id}/exit` | Simulate vehicle exit |
-| GET | `/api/sensors` | List all sensors |
-| POST | `/api/sensors/{id}/offline` | Disable sensor |
-| POST | `/api/sensors/{id}/restore` | Enable sensor |
+
+| Method | Endpoint                    | Purpose                |
+| ------ | --------------------------- | ---------------------- |
+| GET    | `/api/slots`                | List all parking slots |
+| POST   | `/api/slots/{id}/entry`     | Simulate vehicle entry |
+| POST   | `/api/slots/{id}/exit`      | Simulate vehicle exit  |
+| GET    | `/api/sensors`              | List all sensors       |
+| POST   | `/api/sensors/{id}/offline` | Disable sensor         |
+| POST   | `/api/sensors/{id}/restore` | Enable sensor          |
 
 ### Reservations & Sessions
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/api/reservations` | List reservations |
-| POST | `/api/reservations` | Create reservation |
-| DELETE | `/api/reservations/{id}` | Cancel reservation |
-| GET | `/api/sessions` | List parking sessions |
+
+| Method | Endpoint                 | Purpose               |
+| ------ | ------------------------ | --------------------- |
+| GET    | `/api/reservations`      | List reservations     |
+| POST   | `/api/reservations`      | Create reservation    |
+| DELETE | `/api/reservations/{id}` | Cancel reservation    |
+| GET    | `/api/sessions`          | List parking sessions |
 
 ### Analytics & Events
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/api/analytics` | Get dashboard analytics |
-| GET | `/api/events` | Get sensor events |
-| GET | `/api/vehicles` | List registered vehicles |
+
+| Method | Endpoint         | Purpose                  |
+| ------ | ---------------- | ------------------------ |
+| GET    | `/api/analytics` | Get dashboard analytics  |
+| GET    | `/api/events`    | Get sensor events        |
+| GET    | `/api/vehicles`  | List registered vehicles |
 
 ### Simulation Control
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| POST | `/api/simulation/start` | Start live simulation |
-| POST | `/api/simulation/pause` | Pause simulation |
-| POST | `/api/simulation/resume` | Resume simulation |
-| POST | `/api/simulation/stop` | Stop simulation |
-| GET | `/api/simulation/status` | Get simulation status |
+
+| Method | Endpoint                 | Purpose               |
+| ------ | ------------------------ | --------------------- |
+| POST   | `/api/simulation/start`  | Start live simulation |
+| POST   | `/api/simulation/pause`  | Pause simulation      |
+| POST   | `/api/simulation/resume` | Resume simulation     |
+| POST   | `/api/simulation/stop`   | Stop simulation       |
+| GET    | `/api/simulation/status` | Get simulation status |
 
 ### WebSocket
-| Endpoint | Purpose |
-|----------|---------|
+
+| Endpoint                         | Purpose                |
+| -------------------------------- | ---------------------- |
 | `ws://127.0.0.1:8000/ws/parking` | Real-time event stream |
 
 ## 📄 Pages
 
 ### Dashboard (`/`)
+
 - Real-time KPI cards (occupancy, revenue, sessions)
 - 40-slot parking grid visualization
 - Recent sensor events feed
 - Occupancy & revenue charts
 
 ### Parking Map (`/map`)
+
 - Interactive 10×4 grid layout
 - Clickable slots with details modal
 - Sensor telemetry display
 - Entry/exit simulation controls
 
 ### Sensor Simulator (`/simulator`)
+
 - Manual vehicle entry/exit
 - Sensor offline/restore controls
 - Batch traffic burst simulation
 - Live sensor list with batch controls
 
 ### Reservations (`/reservations`)
+
 - Book available slots
 - View active reservations
 - Cancel reservations
 - Duration-based reservation system
 
 ### Analytics (`/analytics`)
+
 - 7-day revenue breakdown
 - Hourly occupancy trends
 - Peak parking hours analysis
 - Sensor uptime statistics
 
 ### Live Events (`/events`)
+
 - Real-time event feed
 - Filter by sensor/slot/event type
 - Timestamp tracking
 - Distance readings
 
 ### Vehicles (`/vehicles`)
+
 - Registered vehicle list
 - Owner information
 - Parking history
 - Total revenue per vehicle
 
 ### Sensors (`/sensors`)
+
 - Sensor health monitoring
 - Battery levels
 - Signal strength
@@ -180,6 +202,7 @@ npm run dev
 ## 🔧 Technology Stack
 
 ### Backend
+
 - **Framework:** FastAPI 0.141.1
 - **ORM:** SQLAlchemy 2.0.52
 - **Validation:** Pydantic 2.13.4
@@ -187,6 +210,7 @@ npm run dev
 - **WebSockets:** websockets 17.0.1
 
 ### Frontend
+
 - **Framework:** React 18
 - **Language:** TypeScript
 - **Bundler:** Vite 5
@@ -196,6 +220,7 @@ npm run dev
 - **Router:** React Router v6
 
 ### Database
+
 - **Type:** SQLite (dev), PostgreSQL ready (prod)
 - **Schema:** 6 relational models
 - **Migrations:** SQLAlchemy declarative
@@ -257,6 +282,7 @@ SensorEvent
 ## 🎮 Testing
 
 ### Manual Testing
+
 1. **Dashboard:** See 40 slots, KPI cards, charts
 2. **Entry/Exit:** Click slot → "Simulate Park Vehicle" → See fee calculation
 3. **Simulation:** Start live simulation → Watch events appear every 2-8s
@@ -264,6 +290,7 @@ SensorEvent
 5. **Analytics:** Check 7-day revenue, hourly trends
 
 ### API Testing (PowerShell)
+
 ```powershell
 # Health check
 Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/health" -UseBasicParsing | Select-Object -ExpandProperty Content
@@ -278,10 +305,12 @@ Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/simulation/start" -Method Post
 ## 🔐 Sensor Logic
 
 **Ultrasonic Distance Threshold:**
+
 - `distance < 30cm` → **OCCUPIED** 🔴
 - `distance >= 30cm` → **AVAILABLE** 🟢
 
 **Simulated Readings:**
+
 - Occupied: 15-25cm (vehicle detected)
 - Available: 70-100cm (no vehicle)
 - Offline: Sensor disabled, slot marked OFFLINE
@@ -291,6 +320,7 @@ Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/simulation/start" -Method Post
 **Rate:** ₹30/hour (Indian Rupees)
 
 **Example:**
+
 - 1 hour → ₹30
 - 2.5 hours → ₹75 (proportional)
 - 45 minutes → ₹22.50
@@ -306,6 +336,7 @@ Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/simulation/start" -Method Post
 ## 📈 Scalability Notes
 
 ### Ready for Production
+
 - SQLite → PostgreSQL (change connection string)
 - FastAPI → Docker container
 - React build → CDN + S3
@@ -313,6 +344,7 @@ Invoke-WebRequest -Uri "http://127.0.0.1:8000/api/simulation/start" -Method Post
 - Sensor abstraction allows ESP32 implementation
 
 ### Architecture Supports
+
 - Multiple parking facilities (add facility_id)
 - Multiple sensors per slot
 - Payment gateway integration
@@ -353,11 +385,13 @@ smartpark/
 ## 📝 Environment Variables
 
 ### Backend
+
 - `DATABASE_URL` (default: `sqlite:///./smartpark.db`)
 - `UVICORN_HOST` (default: `127.0.0.1`)
 - `UVICORN_PORT` (default: `8000`)
 
 ### Frontend
+
 - `VITE_API_BASE` (default: `http://localhost:8000/api`)
 
 ## 🐛 Known Limitations
@@ -384,6 +418,7 @@ smartpark/
 ## 📞 Support
 
 For issues, feature requests, or questions:
+
 1. Check the API docs: http://127.0.0.1:8000/docs
 2. Review error messages in browser console
 3. Check backend logs in terminal
@@ -400,3 +435,5 @@ Built with ❤️ for SRM Institute of Science & Technology
 
 **Last Updated:** August 13, 2026  
 **Status:** ✅ Production Ready (Local Dev Environment)
+#   S m a r t _ P a r k i n g -  
+ 
